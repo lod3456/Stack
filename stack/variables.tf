@@ -1,20 +1,24 @@
-variable "aws_region" {
-  description = "AWS region to deploy resources"
-  default     = "us-east-1"
+variable "region" {
+  description = "AWS region to deploy the resources"
+  type        = string
 }
 
-variable "ecs_cluster_name" {
-  description = "Name of the ECS cluster"
-  default     = "my-ecs-cluster"
+variable "instance_type" {
+  description = "EC2 instance type"
+  default     = "t3.medium"
 }
 
-variable "alb_subnets" {
-  description = "Subnets for the ALB"
-  type        = list(string)
+variable "desired_capacity" {
+  description = "Desired number of instances in the ECS cluster"
+  default     = 3
 }
 
-variable "vpc_subnets" {
-  description = "List of VPC subnet IDs for the ECS instances"
-  type        = list(string)
+variable "max_size" {
+  description = "Maximum number of instances in the ECS cluster"
+  default     = 15
 }
 
+variable "min_size" {
+  description = "Minimum number of instances in the ECS cluster"
+  default     = 3
+}
